@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <style>
-
 .counties :hover {
-  fill: red;
+	fill: red;
 }
 
 .county-borders {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 0.5px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  pointer-events: none;
+	fill: none;
+	stroke: #fff;
+	stroke-width: 0.5px;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+	pointer-events: none;
 }
-
 </style>
 <svg width="960" height="600"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script>
+//window.onload(function(){
 
 var svg = d3.select("svg");
 
 var path = d3.geoPath();
 
-d3.json("https://github.com/ParkBum/D3-Chart/tree/master/d3/seoul.json", function(error, us) {
+
+d3.json("https://github.com/ParkBum/D3-Chart/tree/master/d3s/WebContent/WEB-INF/seoul.json", function(error, us) {
   if (error) throw error;
 
   svg.append("g")
@@ -48,5 +48,5 @@ d3.json("https://github.com/ParkBum/D3-Chart/tree/master/d3/seoul.json", functio
       .attr("class", "county-borders")
       .attr("d", path(topojson.mesh(us, us.objects.counties, function(a, b) { return a !== b; })));
 });
-
+//})
 </script>
